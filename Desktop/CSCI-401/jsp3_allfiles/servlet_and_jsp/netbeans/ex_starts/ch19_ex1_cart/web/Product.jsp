@@ -28,7 +28,7 @@
                     <input type="submit" 
                            value="Add To Cart">
                 </form></td> 
-                <td> <a href="/ch19_ex1_cart/edit.jsp?=${product.code}"> Edit </td>
+                <td> <a href="/ch19_ex1_cart/edit.jsp?${product.code}"> Edit </td>
             </tr>
         </c:forEach>
         </table>
