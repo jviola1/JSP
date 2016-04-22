@@ -11,13 +11,16 @@
         
         <c:forEach var="product" items="${products}">
             <c:if test="${product.code == editID}">
-                <form action="ProductServlet" method="POST">
-                Product Code: <input type="text" name="txtCode" value="${product.code}"> <br>
+                <form action="EditServlet" method="POST">
+                Product Code: <input type="text" readonly name="txtCode" value="${product.code}"> <br>
                 Product Description: <input type="text" name="txtDescription" value="${product.description}"> <br>
-                Product Price: <input type="text" name="txtPrice" value="${product.priceCurrencyFormat}"><br><br>            
-                <input type="submit" value="Submit">
+                Product Price: <input type="text" name="txtPrice" value="${product.priceCurrencyFormat}"><br>            
+                <input type="submit" value="Submit"><br>
         </form
             </c:if>
         </c:forEach>
+        <br>
+        
+        <a href="/ch19_ex1_cart/Product.jsp">Return</a>
     </body>
 </html>
