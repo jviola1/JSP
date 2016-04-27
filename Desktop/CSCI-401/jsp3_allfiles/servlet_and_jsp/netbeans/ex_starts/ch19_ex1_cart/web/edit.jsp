@@ -4,13 +4,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-        <title>JSP Page</title>
     </head>
     <body>
         <c:set var="editID" scope="session" value="${pageContext.request.getQueryString()}"/>
         
         <c:forEach var="product" items="${products}">
-            <c:if test="${product.code == editID}">
+            <c:if test="${product.code == editID}"> <!-- Looks for proper product based on code-->
                 <form action="EditServlet" method="POST">
                 Product Code: <input type="text" readonly name="txtCode" value="${product.code}"> <br>
                 Product Description: <input type="text" name="txtDescription" value="${product.description}"> <br>

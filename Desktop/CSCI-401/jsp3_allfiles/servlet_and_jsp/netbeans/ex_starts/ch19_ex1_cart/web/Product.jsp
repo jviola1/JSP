@@ -1,3 +1,4 @@
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
 <!DOCTYPE html>
@@ -22,17 +23,13 @@
                 <td><c:out value='${product.code}' /></td>
                 <td><c:out value='${product.description}' /></td>
                 <td class="right">${product.priceCurrencyFormat}</td>
-                <td><form action="cart" method="post">
-                    <input type="hidden" name="productCode" 
-                           value="${product.code}">
-                    <input type="submit" 
-                           value="Add To Cart">
-                </form></td> 
-                <td> <a href="/ch19_ex1_cart/edit.jsp?${product.code}"> Edit </td>
+                <td> <a href="/ch19_ex1_cart/edit.jsp?${product.code}"> Edit </td> <!-- Sends user to edit page with product code appended to the end-->
+                <td> <a href="/ch19_ex1_cart/delete.jsp?${product.code}"> Delete </td> <!-- Sends user to delete page with product code appended to the end-->
             </tr>
         </c:forEach>
         </table>
         <br>
-        <button onclick="window.location.href='AddProduct.jsp'">Add Product</button>        
+        <button onclick="window.location.href='AddProduct.jsp'">Add Product</button> <br> <br>
+        <a href="/ch19_ex1_cart/index.jsp">Return to Index</a>        
     </body>
 </html>

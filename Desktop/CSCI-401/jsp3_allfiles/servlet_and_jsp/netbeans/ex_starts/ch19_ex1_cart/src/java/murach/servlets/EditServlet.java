@@ -29,10 +29,17 @@ public class EditServlet extends HttpServlet {
         String sPrice = request.getParameter("txtPrice");
         Double price;
         
+        //Parses inputted price and cuts off the "$" if it starts with one
+        try
+        {
         if(sPrice.startsWith("$"))
             price = Double.parseDouble(sPrice.substring(1));
         else
             price = Double.parseDouble(sPrice);
+        } catch(NumberFormatException e)
+        {
+            throw e;
+        }
         
         Product p = ProductIO.getProduct(code, "/WEB-INF/products.txt");
         p.setDescription(description);
