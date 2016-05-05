@@ -22,11 +22,11 @@ public class CartContextListener implements ServletContextListener {
         sc.setAttribute("currentYear", currentYear);
 
         // initialize the path for the products text file
-        String productsPath = sc.getRealPath("/WEB-INF/products.txt");
-        sc.setAttribute("productsPath", productsPath);
+        //String productsPath = sc.getRealPath("/WEB-INF/products.txt");
+        //sc.setAttribute("productsPath", productsPath);
 
         // initialize the list of products
-        ArrayList<Product> products = ProductIO.getProducts(productsPath);
+        ArrayList<Product> products = ProductIO.getProducts();
         sc.setAttribute("products", products);
     }
 

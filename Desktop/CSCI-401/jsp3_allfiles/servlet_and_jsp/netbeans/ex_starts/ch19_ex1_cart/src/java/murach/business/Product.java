@@ -60,4 +60,5 @@ public class Product implements Serializable {
         NumberFormat currency = NumberFormat.getCurrencyInstance();
         return currency.format(price);
     }
+    
 }

@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import murach.business.Product;
+//import murach.*;
+//import murach.data.ProductDB;
 
 public class ProductServlet extends HttpServlet {
 
@@ -16,7 +18,14 @@ public class ProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
  throws ServletException, IOException { 
-        Product p = new Product(request.getParameter("txtCode"), request.getParameter("txtDescription"), Double.parseDouble(request.getParameter("txtPrice"))); 
-        ProductIO.insert(p, "/WEB-INF/products.txt");
+        
+        String code = request.getParameter("txtCode");
+        String description = request.getParameter("txtDescription");
+        double price = Double.parseDouble(request.getParameter("txtPrice"));
+        
+        Product p = new Product(code, description, price);
+        ProductIO.insert(p);
+        
+        response.sendRedirect("Product.jsp");
     }
 }

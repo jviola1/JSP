@@ -6,64 +6,20 @@ public class ProductIO
 { 
  private static ArrayList<Product> products = null; 
  
- public static ArrayList<Product> getProducts(String path) 
+ public static ArrayList<Product> getProducts() 
  { 
-    products = new ArrayList<Product>(); 
-
-    File file = new File(path); 
-
-    try 
-    { 
-        BufferedReader in = new BufferedReader(new FileReader(file)); 
-        String line = in.readLine(); 
-
-        while (line != null) 
-        { 
-            StringTokenizer t = new StringTokenizer(line, "|"); 
-            if (t.countTokens() >= 3) 
-            { 
-                String code = t.nextToken(); 
-                String description = t.nextToken(); 
-                String priceAsString = t.nextToken(); 
-                double price = Double.parseDouble(priceAsString); 
-                Product p = new Product(); 
-                p.setCode(code); 
-                p.setDescription(description); 
-                p.setPrice(price); 
-                products.add(p); 
-                }
-
-            line = in.readLine(); 
-        } 
-
-        in.close(); 
-        return products; 
-    } 
-
-    catch(IOException e) 
-    { 
-        e.printStackTrace(); 
-        return null; 
-    } 
-
+     products = new ArrayList<Product>(ProductDB.selectProducts());
+     return new ArrayList<Product>(ProductDB.selectProducts());
  } 
 
- public static Product getProduct(String productCode, String path) 
- { 
-    products = getProducts(path); 
-    for (Product p : products) 
-    {
-        if (productCode != null && productCode.equalsIgnoreCase(p.getCode())) 
-        { 
-            return p; 
-        } 
-    } 
-    return null; 
+ public static Product getProduct(String productCode) 
+ {  
+    return ProductDB.selectProduct(productCode);
  } 
 
- public static boolean exists(String productCode, String path) 
+ public static boolean exists(String productCode) 
  { 
-    products = getProducts(path); 
+    products = getProducts(); 
     for (Product p : products) 
     { 
         if (productCode != null && productCode.equalsIgnoreCase(p.getCode())) 
@@ -74,7 +30,7 @@ public class ProductIO
     return false; 
  } 
 
- private static void saveProducts(ArrayList<Product> products, String path) 
+ /*private static void saveProducts(ArrayList<Product> products, String path) 
 { 
     try 
     { 
@@ -91,40 +47,28 @@ public class ProductIO
         e.printStackTrace(); 
     } 
 
- } 
+ } */
 
- public static void insert(Product product, String path) 
+ public static void insert(Product product) 
  { 
-    products = getProducts(path); 
-    products.add(product); 
-    saveProducts(products, path); 
+    products = getProducts(); 
+    products.add(product);
+    ProductDB.insert(product); 
+    products = getProducts();
  } 
 
- public static void update(Product product, String path) 
+ public static void update(Product product) 
  { 
-    products = getProducts(path); 
-    for (int i = 0; i < products.size(); i++) 
-    { 
-        Product p = products.get(i); 
-        if (product.getCode() != null && product.getCode().equalsIgnoreCase(p.getCode())) 
-        { 
-            products.set(i, product); 
-        } 
-    } 
-    saveProducts(products, path); 
+    products = getProducts(); 
+    ProductDB.edit(product);
+    products = getProducts();
  } 
 
- public static void delete(Product product, String path) 
-{ 
-    products = getProducts(path); 
-    for (int i = 0; i < products.size(); i++) 
+    public static void delete(Product product) 
     { 
-        Product p = products.get(i); 
-        if (product != null && product.getCode().equalsIgnoreCase(p.getCode())) 
-        { 
-            products.remove(i); 
-        } 
-    } 
-    saveProducts(products, path); 
-    } 
+        products = getProducts(); 
+        ProductDB.delete(product);
+        products = getProducts();
+
+    }
 }

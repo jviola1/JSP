@@ -20,9 +20,8 @@ public class DeleteServlet extends HttpServlet {
             HttpServletResponse response)
             throws ServletException, IOException {
         
-        ProductIO.delete(ProductIO.getProduct(request.getQueryString(), "/WEB-INF/products.txt")
-            , "/WEB-INF/products.txt");
-                
+        ProductIO.delete(ProductIO.getProduct(request.getQueryString()));
+        response.sendRedirect("Product.jsp");
         
     }
 

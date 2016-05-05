@@ -1,2 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/ch19_ex1_cart"/>
+<Context path="/ch19_ex1_cart">
+    
+    <Resource name="jdbc/musicDB" type="javax.sql.DataSource" auth="Container" 
+            driverClassName="com.mysql.jdbc.Driver" 
+            url="jdbc:mysql://localhost:3306/music" 
+            username="root" 
+            logAbandoned="true" 
+            removeAbandoned="true" removeAbandonedTimeout="60" 
+            maxActive="100" maxIdle="30" maxWait="10000" />
+</Context>

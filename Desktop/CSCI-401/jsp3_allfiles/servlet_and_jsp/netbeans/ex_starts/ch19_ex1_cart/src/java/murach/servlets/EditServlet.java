@@ -41,11 +41,13 @@ public class EditServlet extends HttpServlet {
             throw e;
         }
         
-        Product p = ProductIO.getProduct(code, "/WEB-INF/products.txt");
+        Product p = ProductIO.getProduct(code);
         p.setDescription(description);
         p.setPrice(price);
         
-        ProductIO.update(p, "/WEB-INF/products.txt");
+        ProductIO.update(p);
+        
+        response.sendRedirect("Product.jsp");
         
     }
 
