@@ -9,10 +9,10 @@
     </head>
     <body>
         <h1>Login</h1>
-        <form action="ProductServlet" method="POST">
+        <form action="LogInServlet" method="POST">
             Username: <input type="text" name="txtName"> <br>
             Password: <input type="text" name="txtPass"> <br><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit"><br>
         </form>
         
         <a href="/ch19_ex1_cart/index.jsp">Return to Index</a>        

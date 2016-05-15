@@ -16,12 +16,6 @@ public class ConnectionPool {
         return pool;
     }
     
-    public synchronized static ConnectionPool getInstance(int x) {
-        if (pool == null) {
-            pool = new ConnectionPool(1);
-        }
-        return pool;
-    }
 
     private ConnectionPool() {
         try {
@@ -32,14 +26,6 @@ public class ConnectionPool {
         }
     }
     
-    private ConnectionPool(int x) {
-        try {
-            InitialContext ic = new InitialContext();
-            dataSource = (DataSource) ic.lookup("java:/comp/env/jdbc/userDB");
-        } catch (NamingException e) {
-            System.err.println(e);
-        }
-    }
 
     public Connection getConnection() {
         try {

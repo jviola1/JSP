@@ -26,8 +26,8 @@
                 </form></td>        
         </tr>
         </c:forEach>
-    </table>
-    <a href="/ch19_ex1_cart/Product.jsp">Product Page</a>
+    </table> <br>
+    <a href="/ch19_ex1_cart/admin/Product.jsp">Product Page</a>
     <p>For customer service, please send an email to ${custServEmail}.</p>
 
     <p>&copy; Copyright ${currentYear} Mike Murach &amp; Associates, Inc.
