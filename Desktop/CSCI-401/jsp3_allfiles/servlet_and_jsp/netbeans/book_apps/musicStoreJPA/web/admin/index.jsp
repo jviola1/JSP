@@ -15,6 +15,8 @@
 <form action="reports.jsp" method="post">
     <input type="submit" value="Display Reports" class="left_margin">
 </form>
+   
+<button onclick="window.location.href='Product.jsp'">Product Maintenance</button> <br> <br>
 
 </section>
 
